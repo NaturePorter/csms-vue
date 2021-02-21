@@ -4,6 +4,16 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 导入全局样式表
+import './assets/css/global.css'
+//element-ui
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI);
+//axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false
 
