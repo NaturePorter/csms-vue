@@ -65,7 +65,6 @@ export default {
           _this.login_loading = false;
           _this.$router.push('/home')
         })
-
       })
     },
     //重置按钮的事件
@@ -73,9 +72,6 @@ export default {
       // console.log(this);
       this.$refs[formName].resetFields();
     },
-    test(){
-
-    }
   }
 }
 </script>
