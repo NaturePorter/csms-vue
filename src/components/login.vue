@@ -7,8 +7,8 @@
       </div>
       <el-form class="login_form" ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="">
         <!--用户名-->
-        <el-form-item label="" prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="el-icon-user-solid" type="text"
+        <el-form-item label="" prop="account">
+          <el-input v-model="loginForm.account" prefix-icon="el-icon-user-solid" type="text"
                     name="username"></el-input>
         </el-form-item>
         <!--密码-->
@@ -31,12 +31,12 @@ export default {
     return {
       login_loading: false,
       loginForm: {
-        username: 'admin',
+        account: 'admin',
         password: 'admin'
       },
       //表单验证规则对象
       loginFormRules: {
-        username: [
+        account: [
           {required: true, message: "请输入用户名称", trigger: "blur"},
           {min: 3, max: 10, message: "长度在3到10个字符", trigger: "blur"}
         ],
@@ -52,7 +52,7 @@ export default {
       //为了在axios中调用
       const _this = this;
       _this.login_loading = true;
-      this.$refs.loginForm.validate(async valid => {
+      this.$refs.loginFormRef.validate(async valid => {
         //验证失败
         if (!valid) return;
         this.axios.post('/login', this.$qs.stringify(this.loginForm)).then(function (resp) {

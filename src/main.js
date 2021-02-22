@@ -9,11 +9,29 @@ import './assets/css/global.css'
 //element-ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import {Message,Loading} from 'element-ui'
 Vue.use(ElementUI);
 //axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios);
+
+//在main.js引入qs
+import qs from 'qs'
+//配全局属性配置，在任意组件内可以使用this.$qs获取qs对象
+Vue.prototype.$qs = qs;
+
+//配置请求的根路径
+axios.defaults.baseURL = 'http://localhost:8888/csms_api/'
+//axios拦截器，拦截请求使其带上 token 的令牌
+axios.interceptors.request.use(config => {
+  config.headers.token = window.sessionStorage.getItem('token');
+  Loading.service({text:"Loading..."});
+  return config
+}, err => {
+  Message.error({message: '请求超时!'});
+  return Promise.resolve(err);
+});
 
 Vue.config.productionTip = false
 
