@@ -33,6 +33,27 @@ axios.interceptors.request.use(config => {
   return Promise.resolve(err);
 });
 
+//axios响应拦截器
+axios.interceptors.response.use(res => {
+  Loading.service().close();
+  console.log(res.data.meta.status)
+  if (res.data.meta && res.data.meta.status === 401) { // 401, token失效
+    // clearLoginInfo()
+    router.push({ name: 'login' })
+  }
+  return res;
+}, err => {
+  Loading.service().close();
+  return Promise.reject(err);
+})
+// axios请求拦截
+axios.interceptors.request.use(config => {
+  // 为请求头对象，添加token验证的Authorization字段
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

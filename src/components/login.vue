@@ -15,6 +15,14 @@
         <el-form-item label="" prop="password">
           <el-input v-model="loginForm.password" prefix-icon="el-icon-lock" type="password" name="password"></el-input>
         </el-form-item>
+        <!--单项按钮-->
+        <el-form-item>
+          <el-radio-group v-model="loginForm.type">
+            <el-radio :label="1">管理员</el-radio>
+            <el-radio :label="2">学生</el-radio>
+            <el-radio :label="3">教师</el-radio>
+          </el-radio-group>
+        </el-form-item>
         <el-form-item label="" class="btns">
           <el-button type="primary" @click="login()" :loading="login_loading">登录</el-button>
           <el-button type="info" @click="resetForm('loginFormRef')">重置</el-button>
@@ -32,7 +40,8 @@ export default {
       login_loading: false,
       loginForm: {
         account: 'admin',
-        password: 'admin'
+        password: 'admin',
+        type: 1
       },
       //表单验证规则对象
       loginFormRules: {
@@ -61,6 +70,7 @@ export default {
             return _this.$message.error(resp.data.meta.msg);
           }
           _this.$message.success("登录成功");
+          // 登录成功后，将token保存到客户端的sessionStorage（会话存储）中
           window.sessionStorage.setItem('token', resp.data.data.token);
           _this.login_loading = false;
           _this.$router.push('/home')
@@ -84,7 +94,7 @@ export default {
 
 .login_box {
   width: 450px;
-  height: 280px;
+  height: 300px;
   background-color: #ffffff;
   border-radius: 60px;
   position: absolute;
