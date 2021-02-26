@@ -18,7 +18,7 @@
         <div class="toggle-button" @click="collapseButton"><i class="el-icon-thumb"></i></div>
         <!--菜单栏-->
         <el-menu router class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse"
-                 default-openeds="/home/tabletop" text-color="#fff" active-text-color="#409bff" background-color="#333744" unique-opened>
+                 default-openeds="/home/tabletop" text-color="#fff" active-text-color="#409bff" background-color="#333744" unique-opened router>
           <!--一级菜单-->
           <el-submenu :index="item.id+''" v-for="item in menulist" :key="item.id">
             <template slot="title">
@@ -26,7 +26,7 @@
               <span>{{item.authName}}</span>
             </template>
             <!--二级菜单-->
-            <el-menu-item :index="subItem.id+''" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.id">
               <template slot="title">
                 <i class="el-icon-menu"></i>
                 <span>{{subItem.authName}}</span>
@@ -37,7 +37,8 @@
       </el-aside>
         <!--右侧内容主体-->
         <el-main>
-          <router-view>Main</router-view>
+          <!--路由占位符-->
+          <router-view></router-view>
         </el-main>
       </el-container>
     </el-container>

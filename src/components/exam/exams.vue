@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <h3>Welcome</h3>
-  </div>
+<div>
+  <h3>考试列表</h3>
+</div>
 </template>
 
 <script>
 export default {
-  name: "Welcome"
+  name: "exams"
 }
 </script>
 
