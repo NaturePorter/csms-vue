@@ -36,7 +36,7 @@ axios.interceptors.request.use(config => {
 //axios响应拦截器
 axios.interceptors.response.use(res => {
   Loading.service().close();
-  console.log(res.data.meta.status)
+  //console.log(res.data.meta.status)
   if (res.data.meta && res.data.meta.status === 401) { // 401, token失效
     // clearLoginInfo()
     router.push({ name: 'login' })
