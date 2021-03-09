@@ -3,7 +3,8 @@
     <el-container class="home_container">
       <!--头部区域-->
       <el-header style="text-align: right; font-size: 12px">
-        <img src="../assets/header_logo.png" height="60" width="120" style="float: left"/>
+<!--        <img src="src/assets/header_logo.png" height="60" width="120" style="float: left"/>-->
+        照片
         <el-dropdown>
           <i class="el-icon-user" style="margin-right: 15px"></i>
           <el-dropdown-menu slot="dropdown">
