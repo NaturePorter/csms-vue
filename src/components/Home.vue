@@ -16,7 +16,7 @@
       <el-container>
         <!--侧边栏-->
         <el-aside style="width: auto">
-        <div class="toggle-button" @click="collapseButton"><i class="el-icon-thumb"></i></div>
+        <div class="toggle-button" @click="collapseButton"><i class="el-icon-s-unfold"></i></div>
         <!--菜单栏-->
         <el-menu router class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse"
                  default-openeds="/home/tabletop" text-color="#fff" active-text-color="#409bff" background-color="#333744" unique-opened router>

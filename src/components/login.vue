@@ -3,7 +3,7 @@
     <div class="login_box">
       <!--头像区域-->
       <div class="avatar_box">
-        <img src="../assets/oc_logo.png"/>
+        <img src="../assets/csms_logo.png"/>
       </div>
       <el-form class="login_form" ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="">
         <!--用户名-->
